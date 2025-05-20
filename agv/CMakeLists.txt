@@ -15,6 +15,10 @@ find_package(sensor_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(tf2_ros REQUIRED)
 
+# uncomment the following section in order to fill in
+# further dependencies manually.
+# find_package(<dependency> REQUIRED)
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
@@ -26,5 +30,38 @@ if(BUILD_TESTING)
   set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
+
+include_directories(include)
+
+add_executable(test_node src/test_node.cpp)
+ament_target_dependencies(test_node rclcpp std_msgs geometry_msgs)
+
+ament_python_install_package(${PROJECT_NAME})
+
+install(PROGRAMS
+  agv/reference.py
+
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+install(TARGETS
+  test_node
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+install(
+  DIRECTORY sdf/
+  DESTINATION share/${PROJECT_NAME}/sdf
+)
+install(
+  DIRECTORY meshes/
+  DESTINATION share/${PROJECT_NAME}/meshes
+)
+
+
+install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
+
+
+
 
 ament_package()
