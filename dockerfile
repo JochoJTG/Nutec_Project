@@ -5,7 +5,9 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     nano \
     ros-humble-rclpy \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    python3-tf-transformations 
+    
 
 RUN apt-get update && apt-get install -y \
     libgz-sim6-dev \
@@ -17,8 +19,6 @@ RUN apt-get update && apt-get install -y \
     ros-humble-vision-msgs \
     python3-opencv 
 
-    
-    
     
 RUN mkdir -p /AGV_ws/src
 WORKDIR /AGV_ws

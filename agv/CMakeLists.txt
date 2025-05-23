@@ -53,13 +53,14 @@ install(
   DIRECTORY sdf/
   DESTINATION share/${PROJECT_NAME}/sdf
 )
-install(
-  DIRECTORY meshes/
-  DESTINATION share/${PROJECT_NAME}/meshes
-)
+
+# install(
+#   DIRECTORY meshes/
+#   DESTINATION share/${PROJECT_NAME}/meshes
+# )
 
 
-install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
+# install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
 
 
 
