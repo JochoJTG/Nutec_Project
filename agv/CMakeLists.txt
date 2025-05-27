@@ -40,6 +40,8 @@ ament_python_install_package(${PROJECT_NAME})
 
 install(PROGRAMS
   agv/reference.py
+  agv/Kinematics.py
+  agv/Control.py
 
   DESTINATION lib/${PROJECT_NAME}
 )
